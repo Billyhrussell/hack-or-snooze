@@ -50,3 +50,11 @@ function putStoriesOnPage() {
 
   $allStoriesList.show();
 }
+
+/**TODO: Take user-submitted story
+ * get data from form,
+ * call .addStory()
+ * put new story on page
+ * 
+ * Make sure to pick a good name!
+ */

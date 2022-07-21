@@ -2,6 +2,12 @@
 
 /******************************************************************************
  * Handling navbar clicks and updating navbar
+ * 
+
+//TODO: build listener that causes submit-form to appear on page
+
+
+
  */
 
 /** Show main list of all stories when click site name */
@@ -14,6 +20,16 @@ function navAllStories(evt) {
 }
 
 $body.on("click", "#nav-all", navAllStories);
+
+/** Show submit form when "submit" is clicked */
+
+function navSubmitForm(evt) {
+  console.debug("navSubmitForm",evt);
+  evt.preventDefault();
+  $submitForm.show();
+}
+
+$navSubmit.on("click", navSubmitForm);
 
 /** Show login/signup on click on "login" */
 
