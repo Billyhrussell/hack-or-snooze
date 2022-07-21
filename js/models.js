@@ -24,8 +24,9 @@ class Story {
   /** Parses hostname out of URL and returns it. */
 
   getHostName() {
-    // UNIMPLEMENTED: complete this function!
-    return "hostname.com";
+    // DONE: complete this function!
+    let hostName = (new URL(this.url));
+    return hostName.hostname;
   }
 }
 
@@ -74,7 +75,7 @@ class StoryList {
    */
 
   async addStory(currentUser, storyObject) {
-    // UNIMPLEMENTED: complete this function!
+    // DONE: complete this function!
 
     // Add story data to API
     const response = await axios.post(`${BASE_URL}/stories`,
@@ -82,7 +83,7 @@ class StoryList {
 
     // Make story instance
 
-    // opportunity for destructuring? 
+    // opportunity for destructuring?
     const storyData = response.data.story;
     const newStoryInstance = new Story({
       storyId: storyData.storyId,
@@ -95,16 +96,8 @@ class StoryList {
 
     console.log(newStoryInstance);
 
+    return newStoryInstance;
     // Add to story list
-
-
-
-//     {title: 'Test', author: 'Me', url: 'http://meow.com'}
-// author: "Me"
-// title: "Test"
-// url: "http://meow.com"
-// [[Prototype]]: Object
-
   }
 }
 
