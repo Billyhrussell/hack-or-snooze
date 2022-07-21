@@ -81,12 +81,22 @@ class StoryList {
       { token: currentUser.loginToken, story: storyObject })
 
     // Make story instance
-    
 
-    // Once we send story data to API, it will construct an object
-    // We pass that story data to the Story class to make an instance
+    // opportunity for destructuring? 
+    const storyData = response.data.story;
+    const newStoryInstance = new Story({
+      storyId: storyData.storyId,
+      title: storyData.title,
+      author: storyData.author,
+      url: storyData.url,
+      username: storyData.username,
+      createdAt: storyData.createdAt,
+    })
+
+    console.log(newStoryInstance);
 
     // Add to story list
+
 
 
 //     {title: 'Test', author: 'Me', url: 'http://meow.com'}
