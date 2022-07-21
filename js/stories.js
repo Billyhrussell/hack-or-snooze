@@ -51,10 +51,30 @@ function putStoriesOnPage() {
   $allStoriesList.show();
 }
 
-/**TODO: Take user-submitted story
+/**DONE: Take user-submitted story
  * get data from form,
  * call .addStory()
  * put new story on page
- * 
+ *
  * Make sure to pick a good name!
  */
+
+/**
+ * Takes user form submission and adds to storyList
+ */
+ async function formSubmitted(evt) {
+  console.debug("form has been submitted", evt);
+  evt.preventDefault();
+
+  const storyObject = {
+    author : $("#author").val(),
+    title : $("#title").val(),
+    url : $("#url").val()
+  }
+
+  let newStory = await storyList.addStory(currentUser, storyObject);
+  console.log(newStory);
+}
+
+//Event handler for user form submission
+$submitForm.on("click", "#submit-form-button", formSubmitted);
