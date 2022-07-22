@@ -125,6 +125,21 @@ class User {
     this.loginToken = token;
   }
 
+  /**TODO: Add two methods: */
+
+  /**Add "favorite" function 
+   * Takes a "Story" instance
+   * Sends API request
+  */
+
+
+  /**Add "unfavorite" function
+   * Takes a "Story" instance
+   * Sends API request
+  */
+
+
+  
   /** Register new user in API, make User instance & return it.
    *
    * - username: a new username
