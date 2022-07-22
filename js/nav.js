@@ -16,6 +16,7 @@ function navAllStories(evt) {
 
 $body.on("click", "#nav-all", navAllStories);
 
+
 /** Show submit form when "submit" is clicked */
 
 function navSubmitForm(evt) {
@@ -63,4 +64,32 @@ function updateNavOnLogin() {
   $navLogin.hide();
   $navLogOut.show();
   $navUserProfile.text(`${currentUser.username}`).show();
+}
+
+
+$body.on("click", "#favorite-button", addOrRemoveFavorite);
+
+function addOrRemoveFavorite(evt){
+  //running if statement, check if story is favorited
+  // if favorited, remove
+  // if not favorited, add
+  const clickId = evt.target.parentElement.id;
+
+  console.log(typeof clickId);
+
+  if(currentUser.favorites.length === 0){
+    currentUser.addFavorite(storyList.id);
+  }
+  for(let favorite of currentUser.favorites){
+    console.log(favorite);
+    console.log("this opened")
+    if(favorite.storyId === clickId){
+      console.log("delete favorite")
+      currentUser.deleteFavorite(favorite);
+    } else{
+      console.log("favorite added")
+      currentUser.addFavorite(favorite);
+    }
+  }
+
 }
