@@ -12,6 +12,20 @@ async function getAndShowStoriesOnStart() {
   putStoriesOnPage();
 }
 
+function getAndShowFavoriteStories() {
+
+  $favoritesList.empty();
+
+  //loop through favorites array on currentUser
+  for (let favorite of currentUser.favorites) {
+    const $favorite = generateStoryMarkup(favorite);
+    $favoritesList.append($favorite);
+  }
+
+  $favoritesList.show();
+
+}
+
 /**
  * A render method to render HTML for an individual Story instance
  * - story: an instance of Story

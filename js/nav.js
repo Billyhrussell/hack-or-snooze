@@ -3,11 +3,6 @@
 /******************************************************************************
  * Handling navbar clicks and updating navbar
  *
-
-//TODO: build listener that causes submit-form to appear on page
-
-
-
  */
 
 /** Show main list of all stories when click site name */
@@ -32,6 +27,21 @@ function navSubmitForm(evt) {
 }
 
 $navSubmit.on("click", navSubmitForm);
+
+/** Show user favorites when "favorites" is clicked
+ * Hides main story list
+ */
+
+function navFavorites(evt) {
+  console.debug("navFavorites",evt);
+  console.log('favorites handled');
+  evt.preventDefault();
+  $allStoriesList.hide();
+  getAndShowFavoriteStories();
+}
+
+$navFavorite.on("click", navFavorites);
+
 
 /** Show login/signup on click on "login" */
 

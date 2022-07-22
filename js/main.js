@@ -14,8 +14,10 @@ const $navLogin = $("#nav-login");
 const $navUserProfile = $("#nav-user-profile");
 const $navLogOut = $("#nav-logout");
 const $navSubmit = $("#nav-submit");
+const $navFavorite = $("#nav-favorite");
 
 const $submitForm = $("#submit-form");
+const $favoritesList = $("#favorite-stories-list");
 
 
 /** To make it easier for individual components to show just themselves, this
@@ -28,7 +30,8 @@ function hidePageComponents() {
     $allStoriesList,
     $loginForm,
     $signupForm,
-    //$submitForm
+    $submitForm,
+    $favoritesList,
   ];
   components.forEach(c => c.hide());
 }
