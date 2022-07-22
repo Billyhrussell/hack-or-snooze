@@ -72,8 +72,11 @@ function putStoriesOnPage() {
     url : $("#url").val()
   }
 
-  let newStory = await storyList.addStory(currentUser, storyObject);
+  const newStory = await storyList.addStory(currentUser, storyObject);
   console.log(newStory);
+
+  const $story = generateStoryMarkup(newStory);
+  $allStoriesList.prepend($story);
 }
 
 //Event handler for user form submission

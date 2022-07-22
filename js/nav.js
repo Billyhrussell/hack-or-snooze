@@ -2,7 +2,7 @@
 
 /******************************************************************************
  * Handling navbar clicks and updating navbar
- * 
+ *
 
 //TODO: build listener that causes submit-form to appear on page
 

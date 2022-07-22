@@ -84,17 +84,10 @@ class StoryList {
     // Make story instance
 
     // opportunity for destructuring?
-    const storyData = response.data.story;
-    const newStoryInstance = new Story({
-      storyId: storyData.storyId,
-      title: storyData.title,
-      author: storyData.author,
-      url: storyData.url,
-      username: storyData.username,
-      createdAt: storyData.createdAt,
-    })
+    const newStoryInstance = new Story(response.data.story);
 
     console.log(newStoryInstance);
+    this.stories.unshift(newStoryInstance);
 
     return newStoryInstance;
     // Add to story list
