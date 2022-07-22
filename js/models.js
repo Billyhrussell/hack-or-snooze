@@ -127,7 +127,7 @@ class User {
 
   /**TODO: Add two methods: */
 
-  /**Add "favorite" function 
+  /**Add "favorite" function
    * Takes a "Story" instance
    * Sends API request
   */
@@ -135,11 +135,11 @@ class User {
   async addFavorite(storyInstance){
 
     const token = this.loginToken;
-    
+
     await axios({
       url: `${BASE_URL}/users/${this.username}/favorites/${storyInstance.storyId}`,
       method: "POST",
-      params: { token }, 
+      params: { token },
     })
 
     this.favorites.push(storyInstance);
@@ -152,8 +152,24 @@ class User {
    * Sends API request
   */
 
+   async deleteFavorite(storyInstance){
 
-  
+    const token = this.loginToken;
+
+    await axios({
+      url: `${BASE_URL}/users/${this.username}/favorites/${storyInstance.storyId}`,
+      method: "DELETE",
+      params: { token },
+    })
+
+    const storyIndex = this.favorites.indexOf(storyInstance);
+
+    this.favorites.splice(storyIndex, 1);
+
+  }
+
+
+
   /** Register new user in API, make User instance & return it.
    *
    * - username: a new username
