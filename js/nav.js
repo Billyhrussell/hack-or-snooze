@@ -67,9 +67,13 @@ function updateNavOnLogin() {
 }
 
 
-
+/** TODO: Handle star fill
+ * When star is clicked, check if story is in currentUsers favorites
+ * add to favorites if not inside favorites array
+ * remove from favorites if inside favorites array
+*/
 function addOrRemoveFavorite(evt){
-
+  $(evt.target).toggleClass("bi-star bi-star-fill");
   const clickId = evt.target.parentElement.id;
 
   let getStoryById = Story.getStoryById(clickId);
@@ -84,7 +88,14 @@ function addOrRemoveFavorite(evt){
   }
 
   currentUser.addFavorite(getStoryById);
-  
+
 }
 
 $storiesContainer.on("click", "#favorite-button", addOrRemoveFavorite);
+
+// function fillUnfillStar(evt){
+
+//   $(evt.target).toggleClass("bi-star bi-star-fill");
+// }
+
+// $storiesContainer.on("click", "#favorite-button", fillUnfillStar);

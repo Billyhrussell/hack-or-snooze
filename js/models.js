@@ -20,8 +20,10 @@ class Story {
     this.username = username;
     this.createdAt = createdAt;
   }
-  /** Static method to get an arbitraty story by ID. */
-  // do we need to talk to the API?
+  /** Static method to get an arbitraty story by ID.
+   * Return story object
+   */
+
   static getStoryById(clickId) {
     for (let story of storyList.stories) {
       if (story.storyId === clickId) {
@@ -85,22 +87,16 @@ class StoryList {
    */
 
   async addStory(currentUser, storyObject) {
-    // DONE: complete this function!
 
-    // Add story data to API
     const response = await axios.post(`${BASE_URL}/stories`,
       { token: currentUser.loginToken, story: storyObject })
 
-    // Make story instance
-
-    // opportunity for destructuring?
     const newStoryInstance = new Story(response.data.story);
 
     console.log(newStoryInstance);
     this.stories.unshift(newStoryInstance);
 
     return newStoryInstance;
-    // Add to story list
   }
 }
 
@@ -135,11 +131,10 @@ class User {
     this.loginToken = token;
   }
 
-  /**TODO: Add two methods: */
-
   /**Add "favorite" function
    * Takes a "Story" instance
    * Sends API request
+   * Adds story to currentUser favorites array
   */
 
   async addFavorite(storyInstance) {
@@ -160,6 +155,7 @@ class User {
   /**Add "unfavorite" function
    * Takes a "Story" instance
    * Sends API request
+   * Removes story from currentUser favorites array
   */
 
   async deleteFavorite(storyInstance) {
@@ -169,7 +165,7 @@ class User {
     await axios({
       url: `${BASE_URL}/users/${this.username}/favorites/${storyInstance.storyId}`,
       method: "DELETE",
-      params: { token }, //need "data"? 
+      params: { token }, //need "data"?
     })
 
     const storyIndex = this.favorites.indexOf(storyInstance);

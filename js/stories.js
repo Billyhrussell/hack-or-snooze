@@ -12,6 +12,9 @@ async function getAndShowStoriesOnStart() {
   putStoriesOnPage();
 }
 
+/**
+ * Show the currentUsers favorite stories
+ */
 function getAndShowFavoriteStories() {
 
   $favoritesList.empty();
@@ -39,7 +42,8 @@ function generateStoryMarkup(story) {
   const hostName = story.getHostName();
   return $(`
       <li id="${story.storyId}">
-      <button id="favorite-button">Star</button>
+
+      <i id="favorite-button" class="bi bi-star"></i>
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
         </a>
