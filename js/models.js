@@ -132,6 +132,20 @@ class User {
    * Sends API request
   */
 
+  async addFavorite(storyInstance){
+
+    const token = this.loginToken;
+    
+    await axios({
+      url: `${BASE_URL}/users/${this.username}/favorites/${storyInstance.storyId}`,
+      method: "POST",
+      params: { token }, 
+    })
+
+    this.favorites.push(storyInstance);
+
+  }
+
 
   /**Add "unfavorite" function
    * Takes a "Story" instance
