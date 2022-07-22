@@ -6,6 +6,8 @@ const $body = $("body");
 
 const $storiesLoadingMsg = $("#stories-loading-msg");
 const $allStoriesList = $("#all-stories-list");
+const $favoritesList = $("#favorite-stories-list");
+const $storiesContainer = $(".stories-container");
 
 const $loginForm = $("#login-form");
 const $signupForm = $("#signup-form");
@@ -17,7 +19,6 @@ const $navSubmit = $("#nav-submit");
 const $navFavorite = $("#nav-favorite");
 
 const $submitForm = $("#submit-form");
-const $favoritesList = $("#favorite-stories-list");
 
 
 /** To make it easier for individual components to show just themselves, this

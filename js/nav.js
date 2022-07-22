@@ -67,29 +67,24 @@ function updateNavOnLogin() {
 }
 
 
-$body.on("click", "#favorite-button", addOrRemoveFavorite);
 
 function addOrRemoveFavorite(evt){
-  //running if statement, check if story is favorited
-  // if favorited, remove
-  // if not favorited, add
+
   const clickId = evt.target.parentElement.id;
 
-  console.log(typeof clickId);
+  let getStoryById = Story.getStoryById(clickId);
 
-  if(currentUser.favorites.length === 0){
-    currentUser.addFavorite(storyList.id);
-  }
-  for(let favorite of currentUser.favorites){
-    console.log(favorite);
-    console.log("this opened")
-    if(favorite.storyId === clickId){
-      console.log("delete favorite")
+  for(let favorite of currentUser.favorites) {
+    //check whole object?
+    if (favorite.storyId === getStoryById.storyId) {
+      console.log("deleting favorite");
       currentUser.deleteFavorite(favorite);
-    } else{
-      console.log("favorite added")
-      currentUser.addFavorite(favorite);
+      return;
     }
   }
 
+  currentUser.addFavorite(getStoryById);
+  
 }
+
+$storiesContainer.on("click", "#favorite-button", addOrRemoveFavorite);

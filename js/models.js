@@ -20,6 +20,16 @@ class Story {
     this.username = username;
     this.createdAt = createdAt;
   }
+  /** Static method to get an arbitraty story by ID. */
+  // do we need to talk to the API?
+  static getStoryById(clickId) {
+    for (let story of storyList.stories) {
+      if (story.storyId === clickId) {
+        return story;
+      }
+    }
+  }
+
 
   /** Parses hostname out of URL and returns it. */
 
@@ -132,7 +142,7 @@ class User {
    * Sends API request
   */
 
-  async addFavorite(storyInstance){
+  async addFavorite(storyInstance) {
 
     const token = this.loginToken;
 
@@ -152,14 +162,14 @@ class User {
    * Sends API request
   */
 
-   async deleteFavorite(storyInstance){
+  async deleteFavorite(storyInstance) {
 
     const token = this.loginToken;
 
     await axios({
       url: `${BASE_URL}/users/${this.username}/favorites/${storyInstance.storyId}`,
       method: "DELETE",
-      params: { token },
+      params: { token }, //need "data"? 
     })
 
     const storyIndex = this.favorites.indexOf(storyInstance);
