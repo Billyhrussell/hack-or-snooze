@@ -40,10 +40,22 @@ function generateStoryMarkup(story) {
   // console.debug("generateStoryMarkup", story);
 
   const hostName = story.getHostName();
+  //check if story passed into generateStoryMarkup is also inside currentUser favorites
+
+  //if story is in user favorites, include bi-star-fill in markup
+  //TODO: use find
+  let filledStar = "";
+  for (let favorite of currentUser.favorites) {
+    if (story.storyId === favorite.storyId) {
+      filledStar = "-fill";
+    }
+  }
+
+
   return $(`
       <li id="${story.storyId}">
 
-      <i id="favorite-button" class="bi bi-star"></i>
+      <i id="favorite-button" class="bi bi-star${filledStar}"></i>
         <a href="${story.url}" target="a_blank" class="story-link">
           ${story.title}
         </a>
@@ -81,15 +93,15 @@ function putStoriesOnPage() {
 /**
  * Takes user form submission and adds to storyList
  */
- async function formSubmitted(evt) {
+async function formSubmitted(evt) {
   console.debug("form has been submitted", evt);
   evt.preventDefault();
 
   const storyObject = {
-    author : $("#author").val(),
-    title : $("#title").val(),
-    url : $("#url").val()
-  }
+    author: $("#author").val(),
+    title: $("#title").val(),
+    url: $("#url").val()
+  };
 
   const newStory = await storyList.addStory(currentUser, storyObject);
   console.log(newStory);

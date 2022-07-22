@@ -72,12 +72,18 @@ function updateNavOnLogin() {
  * add to favorites if not inside favorites array
  * remove from favorites if inside favorites array
 */
+
+//TODO: add to stories.js
 function addOrRemoveFavorite(evt){
   $(evt.target).toggleClass("bi-star bi-star-fill");
+  console.log(evt.target);
+
+  //TODO: use jquery
   const clickId = evt.target.parentElement.id;
 
   let getStoryById = Story.getStoryById(clickId);
 
+  //TODO: make an async function
   for(let favorite of currentUser.favorites) {
     //check whole object?
     if (favorite.storyId === getStoryById.storyId) {

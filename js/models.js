@@ -25,6 +25,7 @@ class Story {
    */
 
   static getStoryById(clickId) {
+    //TODO: use find method
     for (let story of storyList.stories) {
       if (story.storyId === clickId) {
         return story;
@@ -36,9 +37,7 @@ class Story {
   /** Parses hostname out of URL and returns it. */
 
   getHostName() {
-    // DONE: complete this function!
-    let hostName = (new URL(this.url));
-    return hostName.hostname;
+    return new URL(this.url).hostname;
   }
 }
 
@@ -165,7 +164,7 @@ class User {
     await axios({
       url: `${BASE_URL}/users/${this.username}/favorites/${storyInstance.storyId}`,
       method: "DELETE",
-      params: { token }, //need "data"?
+      data: { token }, //need "data"?
     })
 
     const storyIndex = this.favorites.indexOf(storyInstance);
